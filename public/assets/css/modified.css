@@ -1,0 +1,31 @@
+.table-filters{ padding-top: 0; padding-bottom: 0; }
+.be-top-header .navbar-header .navbar-brand { width: 200px; }
+
+.btn-success {
+    color: #fff;
+    background-color: #227b43;
+    border-color: #34a853;
+}
+
+.panel-border-color-success {
+    border-top-color: #227b43;
+}
+
+.label-success {
+    background-color: #227b43;
+}
+
+.be-color-header-success .be-top-header {
+    background-color: #227b43;
+    border-bottom-color: #34a853;
+}
+
+.be-user-nav>li.dropdown .dropdown-menu .user-info {
+    background-color: #227b43;
+}
+
+.be-top-header .be-user-nav>li.dropdown .dropdown-menu:after {
+    left: auto;
+    right: 13px;
+    border-bottom-color: #227b43;
+}

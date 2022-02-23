@@ -1,0 +1,41 @@
+<configuration>
+  <system.webServer>
+    <rewrite>
+      <rules>
+        <clear />
+            <rule name="WWW Rewrite" enabled="true" stopProcessing="true">
+              <match url="(.*)" />
+              <conditions>
+                <add input="{HTTP_HOST}" negate="true"
+                  pattern="^www\.([.a-zA-Z0-9]+)$" />
+              </conditions>
+              <action type="Redirect" url="http://www.{HTTP_HOST}/{R:0}"
+                appendQueryString="true" redirectType="Permanent" />
+            </rule>
+              
+            <rule name="Imported Rule 0" stopProcessing="true">
+                    <match url="(.*)" ignoreCase="false" />
+                    <conditions logicalGrouping="MatchAll">
+                        <add input="{HTTPS}" pattern="off" ignoreCase="false" />
+                    </conditions>
+                    <action type="Redirect" url="https://{HTTP_HOST}{URL}" redirectType="Found" />
+                </rule>
+        <rule name="Imported Rule 1" stopProcessing="true">
+          <match url="^(.*)/$" ignoreCase="false" />
+          <conditions>
+            <add input="{REQUEST_FILENAME}" matchType="IsDirectory" ignoreCase="false" negate="true" />
+          </conditions>
+          <action type="Redirect" redirectType="Permanent" url="/{R:1}" />
+        </rule>
+        <rule name="Imported Rule 2" stopProcessing="true">
+          <match url="^" ignoreCase="false" />
+          <conditions>
+            <add input="{REQUEST_FILENAME}" matchType="IsDirectory" ignoreCase="false" negate="true" />
+            <add input="{REQUEST_FILENAME}" matchType="IsFile" ignoreCase="false" negate="true" />
+          </conditions>
+          <action type="Rewrite" url="index.php" />
+        </rule>
+      </rules>
+    </rewrite>
+  </system.webServer>
+</configuration>
